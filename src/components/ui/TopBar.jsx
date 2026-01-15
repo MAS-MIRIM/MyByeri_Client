@@ -6,9 +6,8 @@ const TopBar = ({ onSearch, onLogoClick }) => {
     <div
       style={{
         width: "100%",
-        maxWidth: "402px",
-        margin: "0 auto",
-        padding: "1rem 1.5rem",
+        margin: "0",
+        padding: "1rem",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
@@ -41,7 +40,6 @@ const TopBar = ({ onSearch, onLogoClick }) => {
           background: "none",
           border: "none",
           cursor: "pointer",
-          padding: "0.5rem",
           borderRadius: "0.5rem",
           display: "flex",
           alignItems: "center",

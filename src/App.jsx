@@ -19,7 +19,7 @@ function App() {
   const [books, setBooks] = useState(() => loadBooks());
   const [currentBook, setCurrentBook] = useState(null);
   const [currentChapter, setCurrentChapter] = useState(null);
-  const [direction, setDirection] = useState(1); // 1: forward, -1: backward
+  const [direction, setDirection] = useState(1);
 
   useEffect(() => {
     if (books.length > 0) {
@@ -27,7 +27,6 @@ function App() {
     }
   }, [books]);
 
-  // 완독한 책과 미완독 책 분리
   const completedBooks = books.filter(
     (book) =>
       book.totalChapters > 0 &&
@@ -39,7 +38,6 @@ function App() {
       book.completedChapters.length < book.totalChapters
   );
 
-  // 독서 기록장 업데이트를 위한 전역 함수
   useEffect(() => {
     window.updateBookReadingRecord = (bookId, readingRecord) => {
       setBooks((prevBooks) =>
@@ -111,12 +109,10 @@ function App() {
           notes: { ...book.notes, [chapterNum]: note },
         };
 
-        // 모든 챕터를 완료했고 아직 독서 기록장이 없으면 딱 한 번만 생성
         if (
           newCompletedChapters.length === book.totalChapters &&
           !updatedBook.readingRecord
         ) {
-          // 비동기로 독서 기록장 생성 (딱 한 번만)
           generateReadingRecord(updatedBook)
             .then((record) => {
               if (record) {
@@ -170,7 +166,6 @@ function App() {
     setView(newView);
   };
 
-  // 메뉴바에서 사용할 뷰인지 확인
   const isMenuView = ["home", "book", "puzzle", "profile"].includes(view);
 
   return (
@@ -346,7 +341,6 @@ function App() {
           >
             <ReadingRecordView
               book={currentBook}
-              onBack={() => navigate("detail", -1)}
               onUpdateRecord={updateReadingRecord}
               onDeleteRecord={deleteReadingRecord}
             />

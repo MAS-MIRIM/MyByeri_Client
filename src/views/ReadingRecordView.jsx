@@ -6,7 +6,6 @@ import TextArea from "../components/ui/TextArea";
 
 const ReadingRecordView = ({
   book,
-  onBack,
   onUpdateRecord,
   onDeleteRecord,
 }) => {
@@ -28,7 +27,6 @@ const ReadingRecordView = ({
     ) {
       generateRecord();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const generateRecord = async () => {
@@ -42,7 +40,6 @@ const ReadingRecordView = ({
       if (generatedRecord) {
         setRecord(generatedRecord);
         setEditedRecord(generatedRecord);
-        // 부모 컴포넌트에 기록장 저장 요청
         if (onUpdateRecord) {
           onUpdateRecord(book.isbn, generatedRecord);
         } else if (window.updateBookReadingRecord) {
@@ -329,7 +326,6 @@ const ReadingRecordView = ({
                 }}
               >
                 {record.split("\n").map((line, index) => {
-                  // 제목이나 섹션 구분을 위한 스타일링
                   if (
                     line.trim().startsWith("#") ||
                     line.trim().match(/^[가-힣]+:$/)

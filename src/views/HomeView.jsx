@@ -18,9 +18,8 @@ const HomeView = () => {
         <div>
           <h2
             style={{
-              fontSize: "1.5rem",
-              fontWeight: "700",
-              color: "#111827",
+              fontSize: "1.4rem",
+              fontWeight: "500",
               margin: 0,
               fontFamily: "Pretendard",
             }}
@@ -31,8 +30,8 @@ const HomeView = () => {
             style={{
               marginTop: "0.5rem",
               marginBottom: 0,
-              fontSize: "1rem",
-              color: "#4B5563",
+              fontSize: "1.4rem",
+              fontWeight: "500",
               fontFamily: "Pretendard",
             }}
           >
@@ -40,13 +39,14 @@ const HomeView = () => {
           </p>
         </div>
 
-        <div style={{ margin: "0 -1.5rem" }}>
+        <div style={{ margin: "0" }}>
           <img
             src={LevelImage}
             alt="Level"
             style={{
               width: "100%",
               display: "block",
+              textAlign: "center",
             }}
           />
         </div>
@@ -54,10 +54,9 @@ const HomeView = () => {
         <section>
           <div
             style={{
-              fontSize: "1rem",
-              fontWeight: "700",
-              color: "#111827",
-              marginBottom: "0.75rem",
+              fontSize: "1.4rem",
+              fontWeight: "500",
+              margin: "1rem 0",
               fontFamily: "Pretendard",
             }}
           >
@@ -86,7 +85,7 @@ const HomeView = () => {
               >
                 <div
                   style={{
-                    height: "90px",
+                    height: "140px",
                     borderRadius: "10px",
                     background:
                       "linear-gradient(135deg, #D7EFFF 0%, #F1F8FF 100%)",

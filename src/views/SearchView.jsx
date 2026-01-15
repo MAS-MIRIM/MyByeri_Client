@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Container from "../components/ui/Container";
-import Header from "../components/ui/Header";
 import BackButton from "../components/ui/BackButton";
 import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
