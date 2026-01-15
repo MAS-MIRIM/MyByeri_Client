@@ -21,8 +21,8 @@ const BackButton = ({ onClick }) => (
       borderRadius: "0.5rem",
     }}
     onMouseEnter={(e) => {
-      e.target.style.color = "#111827";
-      e.target.style.backgroundColor = "#F9FAFB";
+      e.target.style.color = "#374151";
+      e.target.style.backgroundColor = "#F3F4F6";
     }}
     onMouseLeave={(e) => {
       e.target.style.color = "#6B7280";

@@ -19,16 +19,16 @@ const ChapterButton = ({ chapterNum, isCompleted, note, onClick }) => (
     }}
     onMouseEnter={(e) => {
       e.currentTarget.style.backgroundColor = isCompleted
-        ? "#C8E6C9"
+        ? "#D1E7DD"
         : "#F9FAFB";
-      e.currentTarget.style.transform = "translateY(-1px)";
+      e.currentTarget.style.borderColor = isCompleted ? "#81C784" : "#D1D5DB";
       e.currentTarget.style.boxShadow = isCompleted
-        ? "0 4px 8px rgba(76, 175, 80, 0.15)"
-        : "0 2px 4px rgba(0, 0, 0, 0.08)";
+        ? "0 2px 6px rgba(76, 175, 80, 0.12)"
+        : "0 2px 4px rgba(0, 0, 0, 0.06)";
     }}
     onMouseLeave={(e) => {
       e.currentTarget.style.backgroundColor = isCompleted ? "#E8F5E9" : "white";
-      e.currentTarget.style.transform = "translateY(0)";
+      e.currentTarget.style.borderColor = isCompleted ? "#A5D6A7" : "#E5E7EB";
       e.currentTarget.style.boxShadow = isCompleted
         ? "0 1px 3px rgba(76, 175, 80, 0.12)"
         : "0 1px 2px rgba(0, 0, 0, 0.05)";

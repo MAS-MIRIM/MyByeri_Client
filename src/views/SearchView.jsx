@@ -55,21 +55,33 @@ const SearchView = ({ onBack, onAddBook }) => {
           disabled={loading}
           style={{
             padding: "0.75rem 1.5rem",
-            backgroundColor: loading ? "#9ca3af" : "#81C784",
+            backgroundColor: loading ? "#9ca3af" : "#66BB6A",
             color: "white",
-            borderRadius: "0.5rem",
+            borderRadius: "0.75rem",
             border: "none",
             cursor: loading ? "not-allowed" : "pointer",
-            transition: "background-color 0.2s",
+            transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
             whiteSpace: "nowrap",
             fontFamily: "Pretendard",
+            fontWeight: "600",
+            boxShadow: loading
+              ? "none"
+              : "0 2px 4px rgba(102, 187, 106, 0.2), 0 1px 2px rgba(0, 0, 0, 0.06)",
           }}
-          onMouseEnter={(e) =>
-            !loading && (e.target.style.backgroundColor = "#66BB6A")
-          }
-          onMouseLeave={(e) =>
-            !loading && (e.target.style.backgroundColor = "#81C784")
-          }
+          onMouseEnter={(e) => {
+            if (!loading) {
+              e.target.style.backgroundColor = "#5CB85C";
+              e.target.style.boxShadow =
+                "0 3px 8px rgba(102, 187, 106, 0.25), 0 1px 3px rgba(0, 0, 0, 0.08)";
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (!loading) {
+              e.target.style.backgroundColor = "#66BB6A";
+              e.target.style.boxShadow =
+                "0 2px 4px rgba(102, 187, 106, 0.2), 0 1px 2px rgba(0, 0, 0, 0.06)";
+            }
+          }}
         >
           {loading ? "검색 중..." : "검색"}
         </button>

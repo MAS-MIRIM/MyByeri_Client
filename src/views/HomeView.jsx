@@ -42,15 +42,15 @@ const HomeView = ({
         }}
         onMouseEnter={(e) => {
           e.target.style.boxShadow =
-            "0 4px 12px rgba(76, 175, 80, 0.2), 0 2px 4px rgba(0, 0, 0, 0.08)";
-          e.target.style.backgroundColor = "#C8E6C9";
-          e.target.style.transform = "translateY(-1px)";
+            "0 3px 8px rgba(76, 175, 80, 0.15), 0 1px 3px rgba(0, 0, 0, 0.06)";
+          e.target.style.backgroundColor = "#D1E7DD";
+          e.target.style.borderColor = "#A5D6A7";
         }}
         onMouseLeave={(e) => {
           e.target.style.boxShadow =
             "0 2px 4px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04)";
           e.target.style.backgroundColor = "#E8F5E9";
-          e.target.style.transform = "translateY(0)";
+          e.target.style.borderColor = "#C8E6C9";
         }}
       >
         <BookOpen size={20} />
@@ -81,14 +81,14 @@ const HomeView = ({
       }}
       onMouseEnter={(e) => {
         e.target.style.boxShadow =
-          "0 4px 12px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)";
-        e.target.style.transform = "translateY(-1px)";
+          "0 3px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05)";
+        e.target.style.backgroundColor = "#FAFAFA";
         e.target.style.borderColor = "#D1D5DB";
       }}
       onMouseLeave={(e) => {
         e.target.style.boxShadow =
           "0 2px 4px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04)";
-        e.target.style.transform = "translateY(0)";
+        e.target.style.backgroundColor = "white";
         e.target.style.borderColor = "#E5E7EB";
       }}
     >

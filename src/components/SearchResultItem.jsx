@@ -16,15 +16,15 @@ const SearchResultItem = ({ book, selected, onClick }) => (
     }}
     onMouseEnter={(e) => {
       if (!selected) {
-        e.currentTarget.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)";
-        e.currentTarget.style.transform = "translateY(-2px)";
+        e.currentTarget.style.boxShadow = "0 3px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05)";
+        e.currentTarget.style.backgroundColor = "#FAFAFA";
         e.currentTarget.style.borderColor = "#D1D5DB";
       }
     }}
     onMouseLeave={(e) => {
       if (!selected) {
         e.currentTarget.style.boxShadow = "0 1px 2px rgba(0, 0, 0, 0.05)";
-        e.currentTarget.style.transform = "translateY(0)";
+        e.currentTarget.style.backgroundColor = "white";
         e.currentTarget.style.borderColor = "#E5E7EB";
       }
     }}
