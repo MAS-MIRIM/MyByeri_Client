@@ -9,7 +9,7 @@ const AppContainer = ({ children }) => (
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "flex-start",
-      background: "linear-gradient(to bottom right, #F0F9F4, #E8F5E9)",
+      background: "#EEF7FF",
       fontFamily: "Pretendard",
     }}
   >

@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import AppContainer from "./components/ui/AppContainer";
+import TopBar from "./components/ui/TopBar";
+import NavBar from "./components/ui/NavBar";
 import HomeView from "./views/HomeView";
+import BookView from "./views/BookView";
+import PuzzleView from "./views/PuzzleView";
+import ProfileView from "./views/ProfileView";
 import SearchView from "./views/SearchView";
 import DetailView from "./views/DetailView";
 import ChapterView from "./views/ChapterView";
-import CompletedBooksView from "./views/CompletedBooksView";
 import ReadingRecordView from "./views/ReadingRecordView";
 import { loadBooks, saveBooks } from "./utils/storage";
 import { generateReadingRecord } from "./utils/gemini";
@@ -166,8 +170,13 @@ function App() {
     setView(newView);
   };
 
+  // 메뉴바에서 사용할 뷰인지 확인
+  const isMenuView = ["home", "book", "puzzle", "profile"].includes(view);
+
   return (
     <AppContainer>
+      {isMenuView && <TopBar onSearch={() => navigate("search", 1)} />}
+
       <AnimatePresence mode="wait" custom={direction}>
         {view === "home" && (
           <motion.div
@@ -183,13 +192,72 @@ function App() {
             <HomeView
               books={incompleteBooks}
               completedCount={completedBooks.length}
-              onSearch={() => navigate("search", 1)}
               onSelectBook={(book) => {
                 setCurrentBook(book);
                 navigate("detail", 1);
               }}
               onDeleteBook={deleteBook}
-              onViewCompleted={() => navigate("completed", 1)}
+              onViewCompleted={() => navigate("profile", 1)}
+            />
+          </motion.div>
+        )}
+
+        {view === "book" && (
+          <motion.div
+            key="book"
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={slideTransition}
+            style={{ width: "100%" }}
+          >
+            <BookView
+              books={books}
+              onSelectBook={(book) => {
+                setCurrentBook(book);
+                navigate("detail", 1);
+              }}
+              onDeleteBook={deleteBook}
+            />
+          </motion.div>
+        )}
+
+        {view === "puzzle" && (
+          <motion.div
+            key="puzzle"
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={slideTransition}
+            style={{ width: "100%" }}
+          >
+            <PuzzleView />
+          </motion.div>
+        )}
+
+        {view === "profile" && (
+          <motion.div
+            key="profile"
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={slideTransition}
+            style={{ width: "100%" }}
+          >
+            <ProfileView
+              completedBooks={completedBooks}
+              onSelectBook={(book) => {
+                setCurrentBook(book);
+                navigate("detail", 1);
+              }}
+              onDeleteBook={deleteBook}
+              onBack={() => navigate("home", -1)}
             />
           </motion.div>
         )}
@@ -212,29 +280,6 @@ function App() {
           </motion.div>
         )}
 
-        {view === "completed" && (
-          <motion.div
-            key="completed"
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={slideTransition}
-            style={{ width: "100%" }}
-          >
-            <CompletedBooksView
-              completedBooks={completedBooks}
-              onBack={() => navigate("home", -1)}
-              onSelectBook={(book) => {
-                setCurrentBook(book);
-                navigate("detail", 1);
-              }}
-              onDeleteBook={deleteBook}
-            />
-          </motion.div>
-        )}
-
         {view === "detail" && currentBook && (
           <motion.div
             key={`detail-${currentBook.isbn}`}
@@ -252,8 +297,8 @@ function App() {
                 const backView =
                   currentBook.completedChapters.length ===
                   currentBook.totalChapters
-                    ? "completed"
-                    : "home";
+                    ? "profile"
+                    : "book";
                 setCurrentBook(null);
                 navigate(backView, -1);
               }}
@@ -313,6 +358,13 @@ function App() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {isMenuView && (
+        <NavBar
+          currentView={view}
+          onNavigate={(viewId) => navigate(viewId, 1)}
+        />
+      )}
     </AppContainer>
   );
 }

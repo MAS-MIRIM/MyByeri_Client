@@ -41,7 +41,6 @@ const SearchView = ({ onBack, onAddBook }) => {
   return (
     <Container>
       <BackButton onClick={onBack} />
-      <Header title="Search For Books" />
 
       <div style={{ marginBottom: "1.5rem", display: "flex", gap: "0.5rem" }}>
         <Input

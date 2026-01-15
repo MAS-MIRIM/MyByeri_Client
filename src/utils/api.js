@@ -1,7 +1,7 @@
 export const searchBooks = async (query) => {
   try {
     const response = await fetch(
-      `https://www.nl.go.kr/NL/search/openApi/search.do?key=&kwd=%ED%86%A0%EC%A7%80=${encodeURIComponent(
+      `https://www.nl.go.kr/seoji/SearchApi.do?cert_key=&result_style=json&page_no=1&page_size=10&title=${encodeURIComponent(
         query
       )}`
     );

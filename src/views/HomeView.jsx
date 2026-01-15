@@ -1,23 +1,16 @@
-import { Search, BookOpen } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import Container from "../components/ui/Container";
-import Header from "../components/ui/Header";
 import BookCard from "../components/BookCard";
 import EmptyState from "../components/EmptyState";
 
 const HomeView = ({
   books,
   completedCount,
-  onSearch,
   onSelectBook,
   onDeleteBook,
   onViewCompleted,
 }) => (
   <Container>
-    <Header
-      title="MYBYERI"
-      subtitle="처음부터 끝까지 읽게 만들기 위한 나만의 독서 뼈대"
-    />
-
     {completedCount > 0 && (
       <button
         onClick={onViewCompleted}
@@ -57,43 +50,6 @@ const HomeView = ({
         완독한 책 {completedCount}권 보기
       </button>
     )}
-
-    <button
-      onClick={onSearch}
-      style={{
-        width: "100%",
-        marginBottom: "2rem",
-        padding: "1rem 1.5rem",
-        backgroundColor: "white",
-        borderRadius: "0.875rem",
-        boxShadow:
-          "0 2px 4px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "0.625rem",
-        color: "#374151",
-        fontWeight: "600",
-        border: "1px solid #E5E7EB",
-        cursor: "pointer",
-        transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
-        fontFamily: "Pretendard",
-      }}
-      onMouseEnter={(e) => {
-        e.target.style.boxShadow =
-          "0 2px 6px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.04)";
-        e.target.style.backgroundColor = "#FCFCFC";
-        e.target.style.borderColor = "#E0E0E0";
-      }}
-      onMouseLeave={(e) => {
-        e.target.style.boxShadow =
-          "0 2px 4px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04)";
-        e.target.style.backgroundColor = "white";
-        e.target.style.borderColor = "#E5E7EB";
-      }}
-    >
-      <Search size={20} />책 검색하고 추가하기
-    </button>
 
     {books.length === 0 ? (
       <EmptyState

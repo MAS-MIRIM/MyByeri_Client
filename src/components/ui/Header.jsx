@@ -22,7 +22,7 @@ const Header = ({ title, subtitle }) => (
           fontFamily: "Pretendard",
           fontSize: "1rem",
           lineHeight: "1.6",
-          maxWidth: "32rem",
+          maxWidth: "36rem",
           margin: "0 auto",
         }}
       >
