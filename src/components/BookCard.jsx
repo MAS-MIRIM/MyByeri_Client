@@ -38,6 +38,28 @@ const BookCard = ({ book, onClick, onDelete }) => {
         >
           <X size={20} color="#ef4444" />
         </button>
+        {isComplete && (
+          <div
+            style={{
+              position: "absolute",
+              top: "1.75rem",
+              right: "2rem",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.375rem",
+              color: "#5AA4E6",
+              fontSize: "0.75rem",
+              fontWeight: "600",
+              fontFamily: "Pretendard",
+              backgroundColor: "#EAF6FF",
+              padding: "0.375rem 0.625rem",
+              borderRadius: "9999px",
+            }}
+          >
+            <Check size={14} />
+            완독!
+          </div>
+        )}
 
         <div style={{ display: "flex", gap: "1.25rem" }}>
           <BookCover cover={book.cover} title={book.title} />
@@ -104,26 +126,6 @@ const BookCard = ({ book, onClick, onDelete }) => {
               </div>
               <ProgressBar progress={progress} isComplete={isComplete} />
             </div>
-
-            {isComplete && (
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.375rem",
-                  color: "#5AA4E6",
-                  fontSize: "0.875rem",
-                  fontWeight: "600",
-                  fontFamily: "Pretendard",
-                  backgroundColor: "#EAF6FF",
-                  padding: "0.375rem 0.75rem",
-                  borderRadius: "0.5rem",
-                }}
-              >
-                <Check size={16} />
-                완독!
-              </div>
-            )}
           </div>
         </div>
       </Card>
