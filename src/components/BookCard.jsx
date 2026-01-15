@@ -43,7 +43,7 @@ const BookCard = ({ book, onClick, onDelete }) => {
             style={{
               position: "absolute",
               top: "1.75rem",
-              right: "2rem",
+              right: "1.75rem",
               display: "inline-flex",
               alignItems: "center",
               gap: "0.375rem",
