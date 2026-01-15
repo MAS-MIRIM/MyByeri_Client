@@ -42,12 +42,11 @@ const BookCard = ({ book, onClick, onDelete }) => {
         <div style={{ display: "flex", gap: "1.25rem" }}>
           <BookCover cover={book.cover} title={book.title} />
 
-          <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ flex: 1, minWidth: 0, marginTop: "0.5rem" }}>
             <h3
               style={{
-                fontWeight: "700",
-                fontSize: "1.25rem",
-                color: "#111827",
+                fontWeight: "600",
+                fontSize: "1.2rem",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
                 whiteSpace: "nowrap",
@@ -61,7 +60,7 @@ const BookCard = ({ book, onClick, onDelete }) => {
             <p
               style={{
                 color: "#6B7280",
-                fontSize: "0.9375rem",
+                fontSize: "0.95rem",
                 marginBottom: "1rem",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
@@ -79,11 +78,17 @@ const BookCard = ({ book, onClick, onDelete }) => {
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
-                  fontSize: "0.875rem",
+                  fontSize: "0.9rem",
                   marginBottom: "0.5rem",
                 }}
               >
-                <span style={{ color: "#6B7280", fontFamily: "Pretendard", fontWeight: "500" }}>
+                <span
+                  style={{
+                    color: "#6B7280",
+                    fontFamily: "Pretendard",
+                    fontWeight: "500",
+                  }}
+                >
                   {book.completedChapters.length} / {book.totalChapters} 챕터
                 </span>
                 <span

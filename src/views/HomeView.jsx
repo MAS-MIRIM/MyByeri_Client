@@ -75,17 +75,17 @@ const HomeView = () => {
               <div
                 key={book.title}
                 style={{
-                  minWidth: "140px",
+                  minWidth: "180px",
                   backgroundColor: "#FFFFFF",
                   borderRadius: "12px",
-                  padding: "0.75rem",
+                  padding: "1rem",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
                   flex: "0 0 auto",
                 }}
               >
                 <div
                   style={{
-                    height: "140px",
+                    height: "180px",
                     borderRadius: "10px",
                     background:
                       "linear-gradient(135deg, #D7EFFF 0%, #F1F8FF 100%)",

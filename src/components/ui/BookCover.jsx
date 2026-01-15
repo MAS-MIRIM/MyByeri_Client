@@ -1,10 +1,8 @@
-import { Book } from "lucide-react";
-
 const BookCover = ({ cover, title }) => (
   <div
     style={{
-      width: "5rem",
-      height: "7rem",
+      width: "6rem",
+      height: "8rem",
       background: "linear-gradient(to bottom right, #BFE3FF, #9DD7FF)",
       borderRadius: "0.5rem",
       display: "flex",
@@ -24,9 +22,7 @@ const BookCover = ({ cover, title }) => (
           borderRadius: "0.5rem",
         }}
       />
-    ) : (
-      <Book size={32} color="white" />
-    )}
+    ) : null}
   </div>
 );
 

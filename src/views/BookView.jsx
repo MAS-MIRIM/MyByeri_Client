@@ -7,9 +7,8 @@ const BookView = ({ books, onSelectBook, onDeleteBook }) => {
     <Container>
       <div
         style={{
-          fontSize: "1.25rem",
-          fontWeight: "700",
-          color: "#111827",
+          fontSize: "1.4rem",
+          fontWeight: "500",
           marginBottom: "1.25rem",
           fontFamily: "Pretendard",
         }}
