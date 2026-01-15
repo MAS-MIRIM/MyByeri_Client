@@ -9,28 +9,28 @@ const ChapterButton = ({ chapterNum, isCompleted, note, onClick }) => (
       borderRadius: "0.75rem",
       textAlign: "left",
       transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
-      backgroundColor: isCompleted ? "#E8F5E9" : "white",
-      border: isCompleted ? "1.5px solid #A5D6A7" : "1px solid #E5E7EB",
+      backgroundColor: isCompleted ? "#EAF6FF" : "white",
+      border: isCompleted ? "1.5px solid #BFE3FF" : "1px solid #E5E7EB",
       cursor: "pointer",
       fontFamily: "Pretendard",
       boxShadow: isCompleted
-        ? "0 1px 3px rgba(76, 175, 80, 0.12)"
+        ? "0 1px 3px rgba(90, 164, 230, 0.12)"
         : "0 1px 2px rgba(0, 0, 0, 0.05)",
     }}
     onMouseEnter={(e) => {
       e.currentTarget.style.backgroundColor = isCompleted
-        ? "#E0F2E1"
+        ? "#E3F2FF"
         : "#FAFAFA";
-      e.currentTarget.style.borderColor = isCompleted ? "#90C695" : "#E0E0E0";
+      e.currentTarget.style.borderColor = isCompleted ? "#B1DAFF" : "#E0E0E0";
       e.currentTarget.style.boxShadow = isCompleted
-        ? "0 2px 5px rgba(76, 175, 80, 0.1)"
+        ? "0 2px 5px rgba(90, 164, 230, 0.1)"
         : "0 2px 3px rgba(0, 0, 0, 0.05)";
     }}
     onMouseLeave={(e) => {
-      e.currentTarget.style.backgroundColor = isCompleted ? "#E8F5E9" : "white";
-      e.currentTarget.style.borderColor = isCompleted ? "#A5D6A7" : "#E5E7EB";
+      e.currentTarget.style.backgroundColor = isCompleted ? "#EAF6FF" : "white";
+      e.currentTarget.style.borderColor = isCompleted ? "#BFE3FF" : "#E5E7EB";
       e.currentTarget.style.boxShadow = isCompleted
-        ? "0 1px 3px rgba(76, 175, 80, 0.12)"
+        ? "0 1px 3px rgba(90, 164, 230, 0.12)"
         : "0 1px 2px rgba(0, 0, 0, 0.05)";
     }}
   >
@@ -51,11 +51,11 @@ const ChapterButton = ({ chapterNum, isCompleted, note, onClick }) => (
             alignItems: "center",
             justifyContent: "center",
             fontWeight: "600",
-            backgroundColor: isCompleted ? "#66BB6A" : "#F3F4F6",
+            backgroundColor: isCompleted ? "#7BC3FF" : "#F3F4F6",
             color: isCompleted ? "white" : "#6B7280",
             fontSize: "0.875rem",
             boxShadow: isCompleted
-              ? "0 2px 4px rgba(102, 187, 106, 0.2)"
+              ? "0 2px 4px rgba(123, 195, 255, 0.2)"
               : "none",
           }}
         >

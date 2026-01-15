@@ -21,7 +21,8 @@ const DetailView = ({ book, onBack, onSelectChapter, onViewReadingRecord }) => {
         style={{
           backgroundColor: "white",
           borderRadius: "1rem",
-          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04)",
+          boxShadow:
+            "0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04)",
           padding: "2rem",
           marginBottom: "1.5rem",
           border: "1px solid rgba(0, 0, 0, 0.04)",
@@ -32,7 +33,7 @@ const DetailView = ({ book, onBack, onSelectChapter, onViewReadingRecord }) => {
             style={{
               width: "9rem",
               height: "12rem",
-              background: "linear-gradient(135deg, #A5D6A7 0%, #81C784 100%)",
+              background: "linear-gradient(135deg, #BFE3FF 0%, #9DD7FF 100%)",
               borderRadius: "0.75rem",
               display: "flex",
               alignItems: "center",
@@ -70,7 +71,14 @@ const DetailView = ({ book, onBack, onSelectChapter, onViewReadingRecord }) => {
             >
               {book.title}
             </h2>
-            <p style={{ color: "#6B7280", marginBottom: "1.5rem", fontFamily: "Pretendard", fontSize: "1rem" }}>
+            <p
+              style={{
+                color: "#6B7280",
+                marginBottom: "1.5rem",
+                fontFamily: "Pretendard",
+                fontSize: "1rem",
+              }}
+            >
               {book.author}
             </p>
 
@@ -83,11 +91,19 @@ const DetailView = ({ book, onBack, onSelectChapter, onViewReadingRecord }) => {
                   marginBottom: "0.5rem",
                 }}
               >
-                <span style={{ color: "#6B7280", fontFamily: "Pretendard", fontWeight: "500" }}>읽은 챕터</span>
+                <span
+                  style={{
+                    color: "#6B7280",
+                    fontFamily: "Pretendard",
+                    fontWeight: "500",
+                  }}
+                >
+                  읽은 챕터
+                </span>
                 <span
                   style={{
                     fontWeight: "700",
-                    color: isComplete ? "#4CAF50" : "#66BB6A",
+                    color: isComplete ? "#5AA4E6" : "#7BC3FF",
                     fontFamily: "Pretendard",
                     fontSize: "0.9375rem",
                   }}
@@ -101,7 +117,7 @@ const DetailView = ({ book, onBack, onSelectChapter, onViewReadingRecord }) => {
                   textAlign: "right",
                   marginTop: "0.25rem",
                   fontWeight: "bold",
-                  color: isComplete ? "#66BB6A" : "#81C784",
+                  color: isComplete ? "#7BC3FF" : "#9DD7FF",
                   fontFamily: "Pretendard",
                 }}
               >
@@ -113,8 +129,8 @@ const DetailView = ({ book, onBack, onSelectChapter, onViewReadingRecord }) => {
               <div>
                 <div
                   style={{
-                    backgroundColor: "#E8F5E9",
-                    border: "1px solid #A5D6A7",
+                    backgroundColor: "#EAF6FF",
+                    border: "1px solid #BFE3FF",
                     borderRadius: "0.5rem",
                     padding: "1rem",
                     display: "flex",
@@ -123,12 +139,24 @@ const DetailView = ({ book, onBack, onSelectChapter, onViewReadingRecord }) => {
                     marginBottom: "1rem",
                   }}
                 >
-                  <Check size={24} color="#66BB6A" />
+                  <Check size={24} color="#7BC3FF" />
                   <div style={{ flex: 1 }}>
-                    <p style={{ fontWeight: "bold", color: "#4CAF50", fontFamily: "Pretendard" }}>
+                    <p
+                      style={{
+                        fontWeight: "bold",
+                        color: "#5AA4E6",
+                        fontFamily: "Pretendard",
+                      }}
+                    >
                       완독하셨습니다!
                     </p>
-                    <p style={{ fontSize: "0.875rem", color: "#66BB6A", fontFamily: "Pretendard" }}>
+                    <p
+                      style={{
+                        fontSize: "0.875rem",
+                        color: "#7BC3FF",
+                        fontFamily: "Pretendard",
+                      }}
+                    >
                       모든 챕터를 완료했어요 🎉
                     </p>
                   </div>
@@ -156,7 +184,8 @@ const DetailView = ({ book, onBack, onSelectChapter, onViewReadingRecord }) => {
         style={{
           backgroundColor: "white",
           borderRadius: "1rem",
-          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04)",
+          boxShadow:
+            "0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04)",
           padding: "2rem",
           border: "1px solid rgba(0, 0, 0, 0.04)",
         }}

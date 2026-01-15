@@ -1,7 +1,8 @@
 const Container = ({ children }) => (
   <div
     style={{
-      maxWidth: "36rem",
+      width: "100%",
+      maxWidth: "32rem",
       margin: "0 auto",
       padding: "2rem 1.5rem 5rem 1.5rem",
     }}

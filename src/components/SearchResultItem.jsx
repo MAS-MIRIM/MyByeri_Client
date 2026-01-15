@@ -9,9 +9,9 @@ const SearchResultItem = ({ book, selected, onClick }) => (
       padding: "1.25rem",
       cursor: "pointer",
       transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
-      border: selected ? "2px solid #66BB6A" : "1px solid #E5E7EB",
+      border: selected ? "2px solid #7BC3FF" : "1px solid #E5E7EB",
       boxShadow: selected 
-        ? "0 4px 12px rgba(102, 187, 106, 0.2), 0 2px 4px rgba(0, 0, 0, 0.08)" 
+        ? "0 4px 12px rgba(123, 195, 255, 0.2), 0 2px 4px rgba(0, 0, 0, 0.08)" 
         : "0 1px 2px rgba(0, 0, 0, 0.05)",
     }}
     onMouseEnter={(e) => {
@@ -34,7 +34,7 @@ const SearchResultItem = ({ book, selected, onClick }) => (
         style={{
           width: "4.5rem",
           height: "6rem",
-          background: "linear-gradient(135deg, #A5D6A7 0%, #81C784 100%)",
+          background: "linear-gradient(135deg, #BFE3FF 0%, #9DD7FF 100%)",
           borderRadius: "0.5rem",
           display: "flex",
           alignItems: "center",

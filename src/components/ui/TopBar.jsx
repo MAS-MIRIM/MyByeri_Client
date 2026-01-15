@@ -1,12 +1,12 @@
 import Logo from "../../assets/Logo.svg";
 import { Search } from "lucide-react";
 
-const TopBar = ({ onSearch }) => {
+const TopBar = ({ onSearch, onLogoClick }) => {
   return (
     <div
       style={{
         width: "100%",
-        maxWidth: "36rem",
+        maxWidth: "402px",
         margin: "0 auto",
         padding: "1rem 1.5rem",
         display: "flex",
@@ -15,13 +15,26 @@ const TopBar = ({ onSearch }) => {
         backgroundColor: "transparent",
       }}
     >
-      <img
-        src={Logo}
-        alt="MYBYERI"
+      <button
+        onClick={onLogoClick}
+        type="button"
         style={{
-          height: "28px",
+          background: "none",
+          border: "none",
+          padding: 0,
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
         }}
-      />
+      >
+        <img
+          src={Logo}
+          alt="MYBYERI"
+          style={{
+            height: "28px",
+          }}
+        />
+      </button>
       <button
         onClick={onSearch}
         style={{

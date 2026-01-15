@@ -5,7 +5,7 @@ const BookCover = ({ cover, title }) => (
     style={{
       width: "5rem",
       height: "7rem",
-      background: "linear-gradient(to bottom right, #A5D6A7, #81C784)",
+      background: "linear-gradient(to bottom right, #BFE3FF, #9DD7FF)",
       borderRadius: "0.5rem",
       display: "flex",
       alignItems: "center",

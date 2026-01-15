@@ -21,8 +21,8 @@ const TextArea = ({ value, onChange, placeholder, disabled, rows = 6 }) => (
     }}
     onFocus={(e) => {
       if (!disabled) {
-        e.target.style.boxShadow = "0 0 0 3px rgba(102, 187, 106, 0.15)";
-        e.target.style.borderColor = "#66BB6A";
+        e.target.style.boxShadow = "0 0 0 3px rgba(123, 195, 255, 0.15)";
+        e.target.style.borderColor = "#7BC3FF";
         e.target.style.backgroundColor = "white";
       }
     }}

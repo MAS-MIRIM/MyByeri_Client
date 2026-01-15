@@ -23,10 +23,10 @@ const Button = ({
 
   const variants = {
     primary: {
-      backgroundColor: disabled ? "#d1d5db" : "#66BB6A",
+      backgroundColor: disabled ? "#d1d5db" : "#7BC3FF",
       color: "white",
-      hoverColor: "#63B563",
-      hoverShadow: "0 2px 6px rgba(102, 187, 106, 0.2), 0 1px 2px rgba(0, 0, 0, 0.06)",
+      hoverColor: "#6FB9F2",
+      hoverShadow: "0 2px 6px rgba(123, 195, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.06)",
     },
     secondary: {
       backgroundColor: "white",

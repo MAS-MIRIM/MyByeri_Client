@@ -89,7 +89,7 @@ const BookCard = ({ book, onClick, onDelete }) => {
                 <span
                   style={{
                     fontWeight: "700",
-                    color: isComplete ? "#4CAF50" : "#66BB6A",
+                    color: isComplete ? "#5AA4E6" : "#7BC3FF",
                     fontFamily: "Pretendard",
                     fontSize: "0.9375rem",
                   }}
@@ -106,11 +106,11 @@ const BookCard = ({ book, onClick, onDelete }) => {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "0.375rem",
-                  color: "#4CAF50",
+                  color: "#5AA4E6",
                   fontSize: "0.875rem",
                   fontWeight: "600",
                   fontFamily: "Pretendard",
-                  backgroundColor: "#E8F5E9",
+                  backgroundColor: "#EAF6FF",
                   padding: "0.375rem 0.75rem",
                   borderRadius: "0.5rem",
                 }}

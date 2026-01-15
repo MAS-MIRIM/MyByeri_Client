@@ -5,22 +5,22 @@ import PuzzleIcon from "../../assets/Puzzle.svg";
 
 const NavBar = ({ currentView, onNavigate }) => {
   const menuItems = [
-    { id: "home", icon: HomeIcon, label: "홈" },
-    { id: "book", icon: BookIcon, label: "책" },
-    { id: "puzzle", icon: PuzzleIcon, label: "퍼즐" },
-    { id: "profile", icon: ProfileIcon, label: "프로필" },
+    { id: "home", icon: HomeIcon },
+    { id: "book", icon: BookIcon },
+    { id: "puzzle", icon: PuzzleIcon },
+    { id: "profile", icon: ProfileIcon },
   ];
 
   return (
     <nav
       style={{
-        maxWidth: "36rem",
+        width: "100%",
+        maxWidth: "32rem",
         position: "fixed",
         bottom: 0,
-        left: 460,
-        right: 0,
+        left: "50%",
+        transform: "translateX(-50%)",
         backgroundColor: "#FFFFFF",
-        borderTop: "1px solid #E5E7EB",
         padding: "0.75rem 0",
         display: "flex",
         justifyContent: "space-around",

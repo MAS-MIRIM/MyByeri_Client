@@ -1,23 +1,31 @@
-import { BookOpen, Trophy } from "lucide-react";
 import Container from "../components/ui/Container";
-import BackButton from "../components/ui/BackButton";
-import Header from "../components/ui/Header";
 import BookCard from "../components/BookCard";
 import EmptyState from "../components/EmptyState";
 
-const CompletedBooksView = ({
-  completedBooks,
-  onBack,
-  onSelectBook,
-  onDeleteBook,
-}) => {
+const CompletedBooksView = ({ completedBooks, onSelectBook, onDeleteBook }) => {
   return (
     <Container>
-      <BackButton onClick={onBack} />
-      <Header
-        title="Finished Reads"
-        subtitle={`총 ${completedBooks.length}권을 완독했어요!`}
-      />
+      <div
+        style={{
+          fontSize: "1.25rem",
+          fontWeight: "700",
+          color: "#111827",
+          marginBottom: "0.5rem",
+          fontFamily: "Pretendard",
+        }}
+      >
+        다 읽은 책
+      </div>
+      <div
+        style={{
+          fontSize: "0.95rem",
+          color: "#6B7280",
+          marginBottom: "1.5rem",
+          fontFamily: "Pretendard",
+        }}
+      >
+        총 {completedBooks.length}권을 완독했어요!
+      </div>
 
       {completedBooks.length === 0 ? (
         <EmptyState

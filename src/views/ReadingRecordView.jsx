@@ -1,11 +1,15 @@
 import { Book, Loader2, Edit2, Save, X, Trash2 } from "lucide-react";
 import { useState, useEffect } from "react";
 import Container from "../components/ui/Container";
-import BackButton from "../components/ui/BackButton";
 import Button from "../components/ui/Button";
 import TextArea from "../components/ui/TextArea";
 
-const ReadingRecordView = ({ book, onBack, onUpdateRecord, onDeleteRecord }) => {
+const ReadingRecordView = ({
+  book,
+  onBack,
+  onUpdateRecord,
+  onDeleteRecord,
+}) => {
   const [record, setRecord] = useState(book.readingRecord || "");
   const [isGenerating, setIsGenerating] = useState(false);
   const [isLoading, setIsLoading] = useState(!book.readingRecord);
@@ -18,7 +22,10 @@ const ReadingRecordView = ({ book, onBack, onUpdateRecord, onDeleteRecord }) => 
   }, [book.readingRecord]);
 
   useEffect(() => {
-    if (!book.readingRecord && book.completedChapters.length === book.totalChapters) {
+    if (
+      !book.readingRecord &&
+      book.completedChapters.length === book.totalChapters
+    ) {
       generateRecord();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -69,7 +76,11 @@ const ReadingRecordView = ({ book, onBack, onUpdateRecord, onDeleteRecord }) => 
   };
 
   const handleDelete = () => {
-    if (window.confirm("독서 기록장을 삭제하시겠습니까? 삭제 후에는 다시 생성할 수 있습니다.")) {
+    if (
+      window.confirm(
+        "독서 기록장을 삭제하시겠습니까? 삭제 후에는 다시 생성할 수 있습니다."
+      )
+    ) {
       if (onDeleteRecord) {
         onDeleteRecord(book.isbn);
       } else if (window.deleteBookReadingRecord) {
@@ -84,8 +95,6 @@ const ReadingRecordView = ({ book, onBack, onUpdateRecord, onDeleteRecord }) => 
 
   return (
     <Container>
-      <BackButton onClick={onBack} />
-
       <div
         style={{
           backgroundColor: "white",
@@ -100,7 +109,7 @@ const ReadingRecordView = ({ book, onBack, onUpdateRecord, onDeleteRecord }) => 
             style={{
               width: "8rem",
               height: "11rem",
-              background: "linear-gradient(to bottom right, #A5D6A7, #81C784)",
+              background: "linear-gradient(to bottom right, #BFE3FF, #9DD7FF)",
               borderRadius: "0.5rem",
               display: "flex",
               alignItems: "center",
@@ -141,9 +150,9 @@ const ReadingRecordView = ({ book, onBack, onUpdateRecord, onDeleteRecord }) => 
             <div
               style={{
                 padding: "0.75rem 1rem",
-                backgroundColor: "#E8F5E9",
+                backgroundColor: "#EAF6FF",
                 borderRadius: "0.5rem",
-                color: "#4CAF50",
+                color: "#5AA4E6",
                 fontWeight: "600",
                 fontSize: "0.875rem",
               }}
@@ -173,7 +182,11 @@ const ReadingRecordView = ({ book, onBack, onUpdateRecord, onDeleteRecord }) => 
               gap: "1rem",
             }}
           >
-            <Loader2 size={48} color="#81C784" style={{ animation: "spin 1s linear infinite" }} />
+            <Loader2
+              size={48}
+              color="#9DD7FF"
+              style={{ animation: "spin 1s linear infinite" }}
+            />
             <p style={{ color: "#4b5563", fontSize: "1rem" }}>
               {isGenerating
                 ? "독서 기록장을 생성하고 있어요..."
@@ -196,7 +209,7 @@ const ReadingRecordView = ({ book, onBack, onUpdateRecord, onDeleteRecord }) => 
                     onClick={() => setIsEditing(true)}
                     style={{
                       padding: "0.5rem 1rem",
-                      backgroundColor: "#81C784",
+                      backgroundColor: "#9DD7FF",
                       color: "white",
                       border: "none",
                       borderRadius: "0.5rem",
@@ -207,8 +220,12 @@ const ReadingRecordView = ({ book, onBack, onUpdateRecord, onDeleteRecord }) => 
                       fontWeight: "500",
                       fontSize: "0.875rem",
                     }}
-                    onMouseEnter={(e) => (e.target.style.backgroundColor = "#66BB6A")}
-                    onMouseLeave={(e) => (e.target.style.backgroundColor = "#81C784")}
+                    onMouseEnter={(e) =>
+                      (e.target.style.backgroundColor = "#7BC3FF")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.target.style.backgroundColor = "#9DD7FF")
+                    }
                   >
                     <Edit2 size={16} />
                     수정
@@ -228,8 +245,12 @@ const ReadingRecordView = ({ book, onBack, onUpdateRecord, onDeleteRecord }) => 
                       fontWeight: "500",
                       fontSize: "0.875rem",
                     }}
-                    onMouseEnter={(e) => (e.target.style.backgroundColor = "#dc2626")}
-                    onMouseLeave={(e) => (e.target.style.backgroundColor = "#ef4444")}
+                    onMouseEnter={(e) =>
+                      (e.target.style.backgroundColor = "#dc2626")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.target.style.backgroundColor = "#ef4444")
+                    }
                   >
                     <Trash2 size={16} />
                     삭제
@@ -241,7 +262,7 @@ const ReadingRecordView = ({ book, onBack, onUpdateRecord, onDeleteRecord }) => 
                     onClick={handleSave}
                     style={{
                       padding: "0.5rem 1rem",
-                      backgroundColor: "#81C784",
+                      backgroundColor: "#9DD7FF",
                       color: "white",
                       border: "none",
                       borderRadius: "0.5rem",
@@ -252,8 +273,12 @@ const ReadingRecordView = ({ book, onBack, onUpdateRecord, onDeleteRecord }) => 
                       fontWeight: "500",
                       fontSize: "0.875rem",
                     }}
-                    onMouseEnter={(e) => (e.target.style.backgroundColor = "#66BB6A")}
-                    onMouseLeave={(e) => (e.target.style.backgroundColor = "#81C784")}
+                    onMouseEnter={(e) =>
+                      (e.target.style.backgroundColor = "#7BC3FF")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.target.style.backgroundColor = "#9DD7FF")
+                    }
                   >
                     <Save size={16} />
                     저장
@@ -273,8 +298,12 @@ const ReadingRecordView = ({ book, onBack, onUpdateRecord, onDeleteRecord }) => 
                       fontWeight: "500",
                       fontSize: "0.875rem",
                     }}
-                    onMouseEnter={(e) => (e.target.style.backgroundColor = "#4b5563")}
-                    onMouseLeave={(e) => (e.target.style.backgroundColor = "#6b7280")}
+                    onMouseEnter={(e) =>
+                      (e.target.style.backgroundColor = "#4b5563")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.target.style.backgroundColor = "#6b7280")
+                    }
                   >
                     <X size={16} />
                     취소
@@ -301,14 +330,17 @@ const ReadingRecordView = ({ book, onBack, onUpdateRecord, onDeleteRecord }) => 
               >
                 {record.split("\n").map((line, index) => {
                   // 제목이나 섹션 구분을 위한 스타일링
-                  if (line.trim().startsWith("#") || line.trim().match(/^[가-힣]+:$/)) {
+                  if (
+                    line.trim().startsWith("#") ||
+                    line.trim().match(/^[가-힣]+:$/)
+                  ) {
                     return (
                       <h3
                         key={index}
                         style={{
                           fontWeight: "bold",
                           fontSize: "1.125rem",
-                          color: "#4CAF50",
+                          color: "#5AA4E6",
                           marginTop: index > 0 ? "1.5rem" : "0",
                           marginBottom: "0.75rem",
                         }}

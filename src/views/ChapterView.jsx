@@ -26,7 +26,8 @@ const ChapterView = ({ book, chapterNum, onBack, onComplete }) => {
         style={{
           backgroundColor: "white",
           borderRadius: "1rem",
-          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04)",
+          boxShadow:
+            "0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04)",
           padding: "2rem",
           border: "1px solid rgba(0, 0, 0, 0.04)",
         }}
@@ -50,11 +51,11 @@ const ChapterView = ({ book, chapterNum, onBack, onComplete }) => {
                 justifyContent: "center",
                 fontWeight: "700",
                 color: "white",
-                backgroundColor: isCompleted ? "#66BB6A" : "#81C784",
+                backgroundColor: isCompleted ? "#7BC3FF" : "#9DD7FF",
                 fontSize: "1.125rem",
-                boxShadow: isCompleted 
-                  ? "0 4px 8px rgba(102, 187, 106, 0.3)" 
-                  : "0 4px 8px rgba(129, 199, 132, 0.25)",
+                boxShadow: isCompleted
+                  ? "0 4px 8px rgba(123, 195, 255, 0.3)"
+                  : "0 4px 8px rgba(157, 215, 255, 0.25)",
               }}
             >
               {isCompleted ? <Check size={22} /> : chapterNum}
@@ -72,7 +73,13 @@ const ChapterView = ({ book, chapterNum, onBack, onComplete }) => {
               >
                 챕터 {chapterNum}
               </h2>
-              <p style={{ fontSize: "0.9375rem", color: "#6B7280", fontFamily: "Pretendard" }}>
+              <p
+                style={{
+                  fontSize: "0.9375rem",
+                  color: "#6B7280",
+                  fontFamily: "Pretendard",
+                }}
+              >
                 {book.title}
               </p>
             </div>
@@ -82,17 +89,17 @@ const ChapterView = ({ book, chapterNum, onBack, onComplete }) => {
         {isCompleted ? (
           <div
             style={{
-              backgroundColor: "#E8F5E9",
-              border: "1.5px solid #A5D6A7",
+              backgroundColor: "#EAF6FF",
+              border: "1.5px solid #BFE3FF",
               borderRadius: "0.75rem",
               padding: "1.25rem",
               marginBottom: "2rem",
-              boxShadow: "0 1px 3px rgba(76, 175, 80, 0.1)",
+              boxShadow: "0 1px 3px rgba(90, 164, 230, 0.1)",
             }}
           >
             <p
               style={{
-                color: "#4CAF50",
+                color: "#5AA4E6",
                 fontWeight: "600",
                 marginBottom: "0.375rem",
                 fontFamily: "Pretendard",
@@ -101,24 +108,30 @@ const ChapterView = ({ book, chapterNum, onBack, onComplete }) => {
             >
               ✅ 완료한 챕터
             </p>
-            <p style={{ fontSize: "0.875rem", color: "#66BB6A", fontFamily: "Pretendard" }}>
+            <p
+              style={{
+                fontSize: "0.875rem",
+                color: "#7BC3FF",
+                fontFamily: "Pretendard",
+              }}
+            >
               이미 완료 처리된 챕터입니다
             </p>
           </div>
         ) : (
           <div
             style={{
-              backgroundColor: "#F0F9F4",
-              border: "1.5px solid #C8E6C9",
+              backgroundColor: "#F2FAFF",
+              border: "1.5px solid #D5ECFF",
               borderRadius: "0.75rem",
               padding: "1.25rem",
               marginBottom: "2rem",
-              boxShadow: "0 1px 3px rgba(102, 187, 106, 0.08)",
+              boxShadow: "0 1px 3px rgba(123, 195, 255, 0.08)",
             }}
           >
             <p
               style={{
-                color: "#66BB6A",
+                color: "#7BC3FF",
                 fontWeight: "600",
                 marginBottom: "0.375rem",
                 fontFamily: "Pretendard",
@@ -127,7 +140,13 @@ const ChapterView = ({ book, chapterNum, onBack, onComplete }) => {
             >
               📖 챕터를 읽으셨나요?
             </p>
-            <p style={{ fontSize: "0.875rem", color: "#81C784", fontFamily: "Pretendard" }}>
+            <p
+              style={{
+                fontSize: "0.875rem",
+                color: "#9DD7FF",
+                fontFamily: "Pretendard",
+              }}
+            >
               감상이나 요약을 남겨주세요
             </p>
           </div>

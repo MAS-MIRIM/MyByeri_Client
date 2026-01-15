@@ -54,7 +54,7 @@ const SearchView = ({ onBack, onAddBook }) => {
           disabled={loading}
           style={{
             padding: "0.75rem 1.5rem",
-            backgroundColor: loading ? "#9ca3af" : "#66BB6A",
+            backgroundColor: loading ? "#9ca3af" : "#7BC3FF",
             color: "white",
             borderRadius: "0.75rem",
             border: "none",
@@ -65,20 +65,20 @@ const SearchView = ({ onBack, onAddBook }) => {
             fontWeight: "600",
             boxShadow: loading
               ? "none"
-              : "0 2px 4px rgba(102, 187, 106, 0.2), 0 1px 2px rgba(0, 0, 0, 0.06)",
+              : "0 2px 4px rgba(123, 195, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.06)",
           }}
           onMouseEnter={(e) => {
             if (!loading) {
-              e.target.style.backgroundColor = "#63B563";
+              e.target.style.backgroundColor = "#6FB9F2";
               e.target.style.boxShadow =
-                "0 2px 6px rgba(102, 187, 106, 0.2), 0 1px 2px rgba(0, 0, 0, 0.06)";
+                "0 2px 6px rgba(123, 195, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.06)";
             }
           }}
           onMouseLeave={(e) => {
             if (!loading) {
-              e.target.style.backgroundColor = "#66BB6A";
+              e.target.style.backgroundColor = "#7BC3FF";
               e.target.style.boxShadow =
-                "0 2px 4px rgba(102, 187, 106, 0.2), 0 1px 2px rgba(0, 0, 0, 0.06)";
+                "0 2px 4px rgba(123, 195, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.06)";
             }
           }}
         >

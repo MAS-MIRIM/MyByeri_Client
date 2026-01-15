@@ -175,7 +175,12 @@ function App() {
 
   return (
     <AppContainer>
-      {isMenuView && <TopBar onSearch={() => navigate("search", 1)} />}
+      {isMenuView && (
+        <TopBar
+          onSearch={() => navigate("search", 1)}
+          onLogoClick={() => navigate("home", -1)}
+        />
+      )}
 
       <AnimatePresence mode="wait" custom={direction}>
         {view === "home" && (
@@ -189,16 +194,7 @@ function App() {
             transition={slideTransition}
             style={{ width: "100%" }}
           >
-            <HomeView
-              books={incompleteBooks}
-              completedCount={completedBooks.length}
-              onSelectBook={(book) => {
-                setCurrentBook(book);
-                navigate("detail", 1);
-              }}
-              onDeleteBook={deleteBook}
-              onViewCompleted={() => navigate("profile", 1)}
-            />
+            <HomeView />
           </motion.div>
         )}
 
@@ -214,7 +210,7 @@ function App() {
             style={{ width: "100%" }}
           >
             <BookView
-              books={books}
+              books={incompleteBooks}
               onSelectBook={(book) => {
                 setCurrentBook(book);
                 navigate("detail", 1);
@@ -257,7 +253,6 @@ function App() {
                 navigate("detail", 1);
               }}
               onDeleteBook={deleteBook}
-              onBack={() => navigate("home", -1)}
             />
           </motion.div>
         )}

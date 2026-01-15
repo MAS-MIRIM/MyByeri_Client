@@ -5,9 +5,20 @@ import EmptyState from "../components/EmptyState";
 const BookView = ({ books, onSelectBook, onDeleteBook }) => {
   return (
     <Container>
+      <div
+        style={{
+          fontSize: "1.25rem",
+          fontWeight: "700",
+          color: "#111827",
+          marginBottom: "1.25rem",
+          fontFamily: "Pretendard",
+        }}
+      >
+        지금 읽고 있는 책
+      </div>
       {books.length === 0 ? (
         <EmptyState
-          message="아직 등록된 책이 없습니다"
+          message="지금 읽고 있는 책이 없습니다"
           submessage="첫 책을 추가해보세요!"
         />
       ) : (

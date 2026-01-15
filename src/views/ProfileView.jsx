@@ -1,12 +1,15 @@
 import Container from "../components/ui/Container";
 import CompletedBooksView from "./CompletedBooksView";
 
-const ProfileView = ({ completedBooks, onSelectBook, onDeleteBook, onBack }) => {
+const ProfileView = ({
+  completedBooks,
+  onSelectBook,
+  onDeleteBook,
+}) => {
   return (
     <Container>
       <CompletedBooksView
         completedBooks={completedBooks}
-        onBack={onBack}
         onSelectBook={onSelectBook}
         onDeleteBook={onDeleteBook}
       />
