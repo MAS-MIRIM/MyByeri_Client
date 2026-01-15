@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import AppContainer from "./components/ui/AppContainer";
 import HomeView from "./views/HomeView";
 import SearchView from "./views/SearchView";
@@ -14,6 +15,7 @@ function App() {
   const [books, setBooks] = useState(() => loadBooks());
   const [currentBook, setCurrentBook] = useState(null);
   const [currentChapter, setCurrentChapter] = useState(null);
+  const [direction, setDirection] = useState(1); // 1: forward, -1: backward
 
   useEffect(() => {
     if (books.length > 0) {
@@ -138,81 +140,179 @@ function App() {
     setBooks(books.filter((book) => book.isbn !== bookId));
   };
 
+  const slideVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 300 : -300,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction) => ({
+      x: direction < 0 ? 300 : -300,
+      opacity: 0,
+    }),
+  };
+
+  const slideTransition = {
+    type: "tween",
+    ease: [0.4, 0, 0.2, 1],
+    duration: 0.3,
+  };
+
+  const navigate = (newView, newDirection = 1) => {
+    setDirection(newDirection);
+    setView(newView);
+  };
+
   return (
     <AppContainer>
-      {view === "home" && (
-        <HomeView
-          books={incompleteBooks}
-          completedCount={completedBooks.length}
-          onSearch={() => setView("search")}
-          onSelectBook={(book) => {
-            setCurrentBook(book);
-            setView("detail");
-          }}
-          onDeleteBook={deleteBook}
-          onViewCompleted={() => setView("completed")}
-        />
-      )}
+      <AnimatePresence mode="wait" custom={direction}>
+        {view === "home" && (
+          <motion.div
+            key="home"
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={slideTransition}
+            style={{ width: "100%" }}
+          >
+            <HomeView
+              books={incompleteBooks}
+              completedCount={completedBooks.length}
+              onSearch={() => navigate("search", 1)}
+              onSelectBook={(book) => {
+                setCurrentBook(book);
+                navigate("detail", 1);
+              }}
+              onDeleteBook={deleteBook}
+              onViewCompleted={() => navigate("completed", 1)}
+            />
+          </motion.div>
+        )}
 
-      {view === "search" && (
-        <SearchView onBack={() => setView("home")} onAddBook={addBook} />
-      )}
+        {view === "search" && (
+          <motion.div
+            key="search"
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={slideTransition}
+            style={{ width: "100%" }}
+          >
+            <SearchView
+              onBack={() => navigate("home", -1)}
+              onAddBook={addBook}
+            />
+          </motion.div>
+        )}
 
-      {view === "completed" && (
-        <CompletedBooksView
-          completedBooks={completedBooks}
-          onBack={() => setView("home")}
-          onSelectBook={(book) => {
-            setCurrentBook(book);
-            setView("detail");
-          }}
-          onDeleteBook={deleteBook}
-        />
-      )}
+        {view === "completed" && (
+          <motion.div
+            key="completed"
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={slideTransition}
+            style={{ width: "100%" }}
+          >
+            <CompletedBooksView
+              completedBooks={completedBooks}
+              onBack={() => navigate("home", -1)}
+              onSelectBook={(book) => {
+                setCurrentBook(book);
+                navigate("detail", 1);
+              }}
+              onDeleteBook={deleteBook}
+            />
+          </motion.div>
+        )}
 
-      {view === "detail" && currentBook && (
-        <DetailView
-          book={currentBook}
-          onBack={() => {
-            setView(
-              currentBook.completedChapters.length === currentBook.totalChapters
-                ? "completed"
-                : "home"
-            );
-            setCurrentBook(null);
-          }}
-          onSelectChapter={(chapterNum) => {
-            setCurrentChapter(chapterNum);
-            setView("chapter");
-          }}
-          onViewReadingRecord={() => setView("readingRecord")}
-        />
-      )}
+        {view === "detail" && currentBook && (
+          <motion.div
+            key={`detail-${currentBook.isbn}`}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={slideTransition}
+            style={{ width: "100%" }}
+          >
+            <DetailView
+              book={currentBook}
+              onBack={() => {
+                const backView =
+                  currentBook.completedChapters.length ===
+                  currentBook.totalChapters
+                    ? "completed"
+                    : "home";
+                setCurrentBook(null);
+                navigate(backView, -1);
+              }}
+              onSelectChapter={(chapterNum) => {
+                setCurrentChapter(chapterNum);
+                navigate("chapter", 1);
+              }}
+              onViewReadingRecord={() => navigate("readingRecord", 1)}
+            />
+          </motion.div>
+        )}
 
-      {view === "chapter" && currentBook && currentChapter && (
-        <ChapterView
-          book={currentBook}
-          chapterNum={currentChapter}
-          onBack={() => {
-            setView("detail");
-            setCurrentChapter(null);
-          }}
-          onComplete={(note) => {
-            completeChapter(currentBook.isbn, currentChapter, note);
-            setView("detail");
-            setCurrentChapter(null);
-          }}
-        />
-      )}
+        {view === "chapter" && currentBook && currentChapter && (
+          <motion.div
+            key={`chapter-${currentBook.isbn}-${currentChapter}`}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={slideTransition}
+            style={{ width: "100%" }}
+          >
+            <ChapterView
+              book={currentBook}
+              chapterNum={currentChapter}
+              onBack={() => {
+                setCurrentChapter(null);
+                navigate("detail", -1);
+              }}
+              onComplete={(note) => {
+                completeChapter(currentBook.isbn, currentChapter, note);
+                setCurrentChapter(null);
+                navigate("detail", -1);
+              }}
+            />
+          </motion.div>
+        )}
 
-      {view === "readingRecord" && currentBook && (
-        <ReadingRecordView
-          book={currentBook}
-          onBack={() => setView("detail")}
-          onUpdateRecord={updateReadingRecord}
-          onDeleteRecord={deleteReadingRecord}
-        />
-      )}
+        {view === "readingRecord" && currentBook && (
+          <motion.div
+            key={`readingRecord-${currentBook.isbn}`}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={slideTransition}
+            style={{ width: "100%" }}
+          >
+            <ReadingRecordView
+              book={currentBook}
+              onBack={() => navigate("detail", -1)}
+              onUpdateRecord={updateReadingRecord}
+              onDeleteRecord={deleteReadingRecord}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </AppContainer>
   );
 }
