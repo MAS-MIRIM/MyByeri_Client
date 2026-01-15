@@ -4,7 +4,10 @@ const ChapterButton = ({ chapterNum, isCompleted, note, onClick }) => (
   <button
     onClick={onClick}
     style={{
+      display: "block",
       width: "100%",
+      maxWidth: "100%",
+      overflow: "hidden",
       boxSizing: "border-box",
       padding: "1.125rem 1.25rem",
       borderRadius: "0.75rem",
