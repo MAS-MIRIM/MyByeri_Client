@@ -1,7 +1,7 @@
 import Logo from "../../assets/Logo.svg";
 import { Search } from "lucide-react";
 
-const TopBar = ({ onSearch, onLogoClick }) => {
+const TopBar = ({ onSearch, onLogoClick, showSearch = true }) => {
   return (
     <div
       style={{
@@ -34,27 +34,31 @@ const TopBar = ({ onSearch, onLogoClick }) => {
           }}
         />
       </button>
-      <button
-        onClick={onSearch}
-        style={{
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          borderRadius: "0.5rem",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          transition: "background-color 0.2s",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = "#F3F4F6";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = "transparent";
-        }}
-      >
-        <Search size={24} color="#374151" />
-      </button>
+      {showSearch ? (
+        <button
+          onClick={onSearch}
+          style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            borderRadius: "0.5rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: "background-color 0.2s",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = "#F3F4F6";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = "transparent";
+          }}
+        >
+          <Search size={24} color="#374151" />
+        </button>
+      ) : (
+        <div style={{ width: "24px", height: "24px" }} />
+      )}
     </div>
   );
 };

@@ -48,8 +48,8 @@ const ChapterButton = ({ chapterNum, isCompleted, note, onClick }) => (
       <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
         <div
           style={{
-            width: "2.25rem",
-            height: "2.25rem",
+            width: "1.75rem",
+            height: "1.75rem",
             borderRadius: "9999px",
             display: "flex",
             alignItems: "center",
@@ -63,7 +63,7 @@ const ChapterButton = ({ chapterNum, isCompleted, note, onClick }) => (
               : "none",
           }}
         >
-          {isCompleted ? <Check size={16} /> : chapterNum}
+          {isCompleted ? <Check size={12} /> : chapterNum}
         </div>
         <span
           style={{
@@ -82,7 +82,6 @@ const ChapterButton = ({ chapterNum, isCompleted, note, onClick }) => (
       <p
         style={{
           marginTop: "0.5rem",
-          marginLeft: "2.75rem",
           fontSize: "0.875rem",
           color: "#4b5563",
           overflow: "hidden",

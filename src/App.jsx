@@ -170,12 +170,11 @@ function App() {
 
   return (
     <AppContainer>
-      {isMenuView && (
-        <TopBar
-          onSearch={() => navigate("search", 1)}
-          onLogoClick={() => navigate("home", -1)}
-        />
-      )}
+      <TopBar
+        onSearch={() => navigate("search", 1)}
+        onLogoClick={() => navigate("home", -1)}
+        showSearch={isMenuView}
+      />
 
       <AnimatePresence mode="wait" custom={direction}>
         {view === "home" && (

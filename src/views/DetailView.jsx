@@ -1,4 +1,4 @@
-import { Book, Check, BookOpen } from "lucide-react";
+import { Check, BookOpen } from "lucide-react";
 import Container from "../components/ui/Container";
 import BackButton from "../components/ui/BackButton";
 import ProgressBar from "../components/ui/ProgressBar";
@@ -14,7 +14,7 @@ const DetailView = ({ book, onBack, onSelectChapter, onViewReadingRecord }) => {
   const chapters = Array.from({ length: book.totalChapters }, (_, i) => i + 1);
 
   return (
-    <Container>
+    <Container padding="1.25rem 1.25rem 5rem 1.25rem">
       <BackButton onClick={onBack} />
 
       <div
@@ -23,16 +23,18 @@ const DetailView = ({ book, onBack, onSelectChapter, onViewReadingRecord }) => {
           borderRadius: "1rem",
           boxShadow:
             "0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04)",
-          padding: "2rem",
-          marginBottom: "1.5rem",
-          border: "1px solid rgba(0, 0, 0, 0.04)",
+          padding: "1.25rem",
+          marginBottom: "1.25rem",
+          border: "1px solid #E6F2FF",
         }}
       >
-        <div style={{ display: "flex", gap: "2rem", marginBottom: "1.5rem" }}>
+        <div
+          style={{ display: "flex", gap: "1.5rem", marginBottom: "1.25rem" }}
+        >
           <div
             style={{
-              width: "9rem",
-              height: "12rem",
+              width: "8rem",
+              height: "10rem",
               background: "linear-gradient(135deg, #BFE3FF 0%, #9DD7FF 100%)",
               borderRadius: "0.75rem",
               display: "flex",
@@ -53,18 +55,15 @@ const DetailView = ({ book, onBack, onSelectChapter, onViewReadingRecord }) => {
                   borderRadius: "0.5rem",
                 }}
               />
-            ) : (
-              <Book size={48} color="white" />
-            )}
+            ) : null}
           </div>
 
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1, marginTop: "0.75rem" }}>
             <h2
               style={{
-                fontSize: "1.75rem",
-                fontWeight: "700",
-                color: "#111827",
-                marginBottom: "0.625rem",
+                fontSize: "1.3rem",
+                fontWeight: "600",
+                marginBottom: "0.5rem",
                 fontFamily: "Pretendard",
                 lineHeight: "1.3",
               }}
@@ -74,9 +73,9 @@ const DetailView = ({ book, onBack, onSelectChapter, onViewReadingRecord }) => {
             <p
               style={{
                 color: "#6B7280",
-                marginBottom: "1.5rem",
+                marginBottom: "1.25rem",
                 fontFamily: "Pretendard",
-                fontSize: "1rem",
+                fontSize: "0.95rem",
               }}
             >
               {book.author}
@@ -112,72 +111,88 @@ const DetailView = ({ book, onBack, onSelectChapter, onViewReadingRecord }) => {
                 </span>
               </div>
               <ProgressBar progress={progress} isComplete={isComplete} />
-              <p
+              <div
                 style={{
-                  textAlign: "right",
-                  marginTop: "0.25rem",
-                  fontWeight: "bold",
-                  color: isComplete ? "#7BC3FF" : "#9DD7FF",
-                  fontFamily: "Pretendard",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginTop: "0.4rem",
                 }}
               >
-                {Math.round(progress)}%
-              </p>
-            </div>
-
-            {isComplete && (
-              <div>
-                <div
+                <span
                   style={{
-                    backgroundColor: "#EAF6FF",
-                    border: "1px solid #BFE3FF",
-                    borderRadius: "0.5rem",
-                    padding: "1rem",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                    marginBottom: "1rem",
+                    fontSize: "0.75rem",
+                    color: "#9CA3AF",
+                    fontFamily: "Pretendard",
                   }}
                 >
-                  <Check size={24} color="#7BC3FF" />
-                  <div style={{ flex: 1 }}>
-                    <p
-                      style={{
-                        fontWeight: "bold",
-                        color: "#5AA4E6",
-                        fontFamily: "Pretendard",
-                      }}
-                    >
-                      완독하셨습니다!
-                    </p>
-                    <p
-                      style={{
-                        fontSize: "0.875rem",
-                        color: "#7BC3FF",
-                        fontFamily: "Pretendard",
-                      }}
-                    >
-                      모든 챕터를 완료했어요 🎉
-                    </p>
-                  </div>
-                </div>
-                <Button
-                  onClick={onViewReadingRecord}
-                  variant="secondary"
+                  진행률
+                </span>
+                <span
                   style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "0.5rem",
+                    fontWeight: "700",
+                    color: isComplete ? "#7BC3FF" : "#9DD7FF",
+                    fontFamily: "Pretendard",
+                    fontSize: "0.85rem",
                   }}
                 >
-                  <BookOpen size={20} />
-                  독서 기록장 보기
-                </Button>
+                  {Math.round(progress)}%
+                </span>
               </div>
-            )}
+            </div>
           </div>
         </div>
+        {isComplete && (
+          <div>
+            <div
+              style={{
+                backgroundColor: "#EAF6FF",
+                border: "1px solid #BFE3FF",
+                borderRadius: "0.5rem",
+                padding: "1rem",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                marginBottom: "1rem",
+              }}
+            >
+              <Check size={24} color="#7BC3FF" />
+              <div style={{ flex: 1 }}>
+                <p
+                  style={{
+                    fontWeight: "bold",
+                    color: "#5AA4E6",
+                    fontFamily: "Pretendard",
+                  }}
+                >
+                  완독하셨습니다!
+                </p>
+                <p
+                  style={{
+                    fontSize: "0.875rem",
+                    color: "#7BC3FF",
+                    fontFamily: "Pretendard",
+                  }}
+                >
+                  모든 챕터를 완료했어요 🎉
+                </p>
+              </div>
+            </div>
+            <Button
+              onClick={onViewReadingRecord}
+              variant="secondary"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "0.5rem",
+              }}
+            >
+              <BookOpen size={20} />
+              독서 기록장 보기
+            </Button>
+          </div>
+        )}
       </div>
 
       <div
@@ -186,8 +201,8 @@ const DetailView = ({ book, onBack, onSelectChapter, onViewReadingRecord }) => {
           borderRadius: "1rem",
           boxShadow:
             "0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04)",
-          padding: "2rem",
-          border: "1px solid rgba(0, 0, 0, 0.04)",
+          padding: "1.25rem",
+          border: "1px solid #E6F2FF",
         }}
       >
         <h3

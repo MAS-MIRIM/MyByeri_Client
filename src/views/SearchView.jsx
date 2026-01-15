@@ -38,7 +38,7 @@ const SearchView = ({ onBack, onAddBook }) => {
   };
 
   return (
-    <Container>
+    <Container padding="1rem 1.5rem 5rem 1.5rem">
       <BackButton onClick={onBack} />
 
       <div style={{ marginBottom: "1.5rem", display: "flex", gap: "0.5rem" }}>

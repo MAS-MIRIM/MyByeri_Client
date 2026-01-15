@@ -21,12 +21,10 @@ const BackButton = ({ onClick }) => (
       borderRadius: "0.5rem",
     }}
     onMouseEnter={(e) => {
-      e.target.style.color = "#4B5563";
-      e.target.style.backgroundColor = "#F5F5F5";
+      e.currentTarget.style.color = "#5AA4E6";
     }}
     onMouseLeave={(e) => {
-      e.target.style.color = "#6B7280";
-      e.target.style.backgroundColor = "transparent";
+      e.currentTarget.style.color = "#6B7280";
     }}
   >
     <ChevronLeft size={20} />
