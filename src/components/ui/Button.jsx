@@ -25,15 +25,15 @@ const Button = ({
     primary: {
       backgroundColor: disabled ? "#d1d5db" : "#66BB6A",
       color: "white",
-      hoverColor: "#5CB85C",
-      hoverShadow: "0 3px 8px rgba(102, 187, 106, 0.25), 0 1px 3px rgba(0, 0, 0, 0.08)",
+      hoverColor: "#63B563",
+      hoverShadow: "0 2px 6px rgba(102, 187, 106, 0.2), 0 1px 2px rgba(0, 0, 0, 0.06)",
     },
     secondary: {
       backgroundColor: "white",
       color: "#374151",
       border: "1px solid #E5E7EB",
-      hoverColor: "#F9FAFB",
-      hoverShadow: "0 2px 6px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04)",
+      hoverColor: "#FAFAFA",
+      hoverShadow: "0 2px 4px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03)",
     },
   };
 

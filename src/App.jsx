@@ -142,7 +142,7 @@ function App() {
 
   const slideVariants = {
     enter: (direction) => ({
-      x: direction > 0 ? 300 : -300,
+      x: direction > 0 ? 30 : -30,
       opacity: 0,
     }),
     center: {
@@ -150,7 +150,7 @@ function App() {
       opacity: 1,
     },
     exit: (direction) => ({
-      x: direction < 0 ? 300 : -300,
+      x: direction < 0 ? 30 : -30,
       opacity: 0,
     }),
   };

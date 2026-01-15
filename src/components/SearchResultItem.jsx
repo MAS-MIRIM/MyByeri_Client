@@ -16,9 +16,9 @@ const SearchResultItem = ({ book, selected, onClick }) => (
     }}
     onMouseEnter={(e) => {
       if (!selected) {
-        e.currentTarget.style.boxShadow = "0 3px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05)";
-        e.currentTarget.style.backgroundColor = "#FAFAFA";
-        e.currentTarget.style.borderColor = "#D1D5DB";
+        e.currentTarget.style.boxShadow = "0 2px 6px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.04)";
+        e.currentTarget.style.backgroundColor = "#FCFCFC";
+        e.currentTarget.style.borderColor = "#E0E0E0";
       }
     }}
     onMouseLeave={(e) => {

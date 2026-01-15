@@ -42,9 +42,9 @@ const HomeView = ({
         }}
         onMouseEnter={(e) => {
           e.target.style.boxShadow =
-            "0 3px 8px rgba(76, 175, 80, 0.15), 0 1px 3px rgba(0, 0, 0, 0.06)";
-          e.target.style.backgroundColor = "#D1E7DD";
-          e.target.style.borderColor = "#A5D6A7";
+            "0 2px 6px rgba(76, 175, 80, 0.12), 0 1px 2px rgba(0, 0, 0, 0.05)";
+          e.target.style.backgroundColor = "#E0F2E1";
+          e.target.style.borderColor = "#B8DBC0";
         }}
         onMouseLeave={(e) => {
           e.target.style.boxShadow =
@@ -81,9 +81,9 @@ const HomeView = ({
       }}
       onMouseEnter={(e) => {
         e.target.style.boxShadow =
-          "0 3px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05)";
-        e.target.style.backgroundColor = "#FAFAFA";
-        e.target.style.borderColor = "#D1D5DB";
+          "0 2px 6px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.04)";
+        e.target.style.backgroundColor = "#FCFCFC";
+        e.target.style.borderColor = "#E0E0E0";
       }}
       onMouseLeave={(e) => {
         e.target.style.boxShadow =
