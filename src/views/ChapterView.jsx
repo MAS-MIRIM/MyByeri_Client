@@ -43,8 +43,8 @@ const ChapterView = ({ book, chapterNum, onBack, onComplete }) => {
           >
             <div
               style={{
-                width: "3rem",
-                height: "3rem",
+                width: "2.7rem",
+                height: "2.7rem",
                 borderRadius: "9999px",
                 display: "flex",
                 alignItems: "center",
@@ -58,14 +58,13 @@ const ChapterView = ({ book, chapterNum, onBack, onComplete }) => {
                   : "0 4px 8px rgba(157, 215, 255, 0.25)",
               }}
             >
-              {isCompleted ? <Check size={22} /> : chapterNum}
+              {isCompleted ? <Check size={24} /> : chapterNum}
             </div>
             <div>
               <h2
                 style={{
-                  fontSize: "1.75rem",
+                  fontSize: "1.5rem",
                   fontWeight: "700",
-                  color: "#111827",
                   fontFamily: "Pretendard",
                   lineHeight: "1.3",
                   marginBottom: "0.25rem",
@@ -97,8 +96,11 @@ const ChapterView = ({ book, chapterNum, onBack, onComplete }) => {
               boxShadow: "0 1px 3px rgba(90, 164, 230, 0.1)",
             }}
           >
-            <p
+            <div
               style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.4rem",
                 color: "#5AA4E6",
                 fontWeight: "600",
                 marginBottom: "0.375rem",
@@ -106,8 +108,9 @@ const ChapterView = ({ book, chapterNum, onBack, onComplete }) => {
                 fontSize: "0.9375rem",
               }}
             >
-              ✅ 완료한 챕터
-            </p>
+              <Check size={16} />
+              완료한 챕터
+            </div>
             <p
               style={{
                 fontSize: "0.875rem",

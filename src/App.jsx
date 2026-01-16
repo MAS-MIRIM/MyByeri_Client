@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import AppContainer from "./components/ui/AppContainer";
 import TopBar from "./components/ui/TopBar";
@@ -12,6 +12,7 @@ import DetailView from "./views/DetailView";
 import ChapterView from "./views/ChapterView";
 import ReadingRecordView from "./views/ReadingRecordView";
 import { loadBooks, saveBooks } from "./utils/storage";
+import { fetchBookMatch } from "./utils/api";
 import { generateReadingRecord } from "./utils/gemini";
 
 function App() {
@@ -20,11 +21,75 @@ function App() {
   const [currentBook, setCurrentBook] = useState(null);
   const [currentChapter, setCurrentChapter] = useState(null);
   const [direction, setDirection] = useState(1);
+  const hasHydratedBooks = useRef(false);
 
   useEffect(() => {
     if (books.length > 0) {
       saveBooks(books);
     }
+  }, [books]);
+
+  useEffect(() => {
+    if (hasHydratedBooks.current) return;
+    hasHydratedBooks.current = true;
+
+    const shouldEnrich = (book) =>
+      !book.cover ||
+      !book.publisher ||
+      !book.author ||
+      !book.detailUrl ||
+      !book.description;
+
+    const mergeBook = (book, fetched) => {
+      if (!fetched) return book;
+      return {
+        ...book,
+        title: book.title || fetched.title,
+        author: book.author || fetched.author,
+        publisher: book.publisher || fetched.publisher,
+        cover: book.cover || fetched.cover,
+        description: book.description || fetched.description,
+        detailUrl: book.detailUrl || fetched.detailUrl,
+        publishedAt: book.publishedAt || fetched.publishedAt,
+        translators:
+          book.translators?.length > 0 ? book.translators : fetched.translators,
+        price: Number.isFinite(book.price) ? book.price : fetched.price,
+        salePrice: Number.isFinite(book.salePrice)
+          ? book.salePrice
+          : fetched.salePrice,
+        status: book.status || fetched.status,
+      };
+    };
+
+    const hydrateBooks = async () => {
+      if (books.length === 0) return;
+
+      const updatedBooks = await Promise.all(
+        books.map(async (book) => {
+          if (!shouldEnrich(book)) return book;
+          const fetched = await fetchBookMatch({
+            isbn: book.isbn,
+            title: book.title,
+          });
+          return mergeBook(book, fetched);
+        })
+      );
+
+      const hasChanges = updatedBooks.some(
+        (book, index) => book !== books[index]
+      );
+      if (hasChanges) {
+        setBooks(updatedBooks);
+        setCurrentBook((prevBook) => {
+          if (!prevBook) return prevBook;
+          return (
+            updatedBooks.find((book) => book.isbn === prevBook.isbn) || prevBook
+          );
+        });
+      }
+    };
+
+    hydrateBooks();
   }, [books]);
 
   const completedBooks = books.filter(

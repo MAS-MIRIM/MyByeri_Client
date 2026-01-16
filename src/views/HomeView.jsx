@@ -1,16 +1,33 @@
+import { useEffect, useState } from "react";
 import Container from "../components/ui/Container";
 import LevelImage from "../assets/Level.png";
+import { searchBooks } from "../utils/api";
 
 const HomeView = () => {
-  const weeklyRecommendations = [
-    { title: "월요일의 기록", author: "김하늘" },
-    { title: "푸른 페이지", author: "이서연" },
-    { title: "잔잔한 파도", author: "박지우" },
-    { title: "서재의 빛", author: "최민준" },
-    { title: "읽는 사람", author: "한지민" },
-    { title: "저녁의 문장", author: "정유나" },
-    { title: "느린 호흡", author: "오세진" },
-  ];
+  const [weeklyRecommendations, setWeeklyRecommendations] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    let isActive = true;
+
+    const fetchWeeklyRecommendations = async () => {
+      setLoading(true);
+      const books = await searchBooks("베스트셀러", {
+        size: 7,
+        sort: "latest",
+        target: "title",
+      });
+      if (isActive) {
+        setWeeklyRecommendations(books.slice(0, 7));
+        setLoading(false);
+      }
+    };
+
+    fetchWeeklyRecommendations();
+    return () => {
+      isActive = false;
+    };
+  }, []);
 
   return (
     <Container>
@@ -71,49 +88,67 @@ const HomeView = () => {
               WebkitOverflowScrolling: "touch",
             }}
           >
-            {weeklyRecommendations.map((book) => (
-              <div
-                key={book.title}
-                style={{
-                  minWidth: "180px",
-                  backgroundColor: "#FFFFFF",
-                  borderRadius: "12px",
-                  padding: "1rem",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
-                  flex: "0 0 auto",
-                }}
-              >
+            {(loading ? Array.from({ length: 7 }) : weeklyRecommendations).map(
+              (book, index) => (
                 <div
+                  key={book?.isbn || book?.title || `rec-${index}`}
                   style={{
-                    height: "180px",
-                    borderRadius: "10px",
-                    background:
-                      "linear-gradient(135deg, #D7EFFF 0%, #F1F8FF 100%)",
-                    marginBottom: "0.75rem",
-                  }}
-                />
-                <div
-                  style={{
-                    fontSize: "0.9rem",
-                    fontWeight: "600",
-                    color: "#111827",
-                    marginBottom: "0.35rem",
-                    fontFamily: "Pretendard",
+                    minWidth: "200px",
+                    backgroundColor: "#FFFFFF",
+                    borderRadius: "12px",
+                    padding: "1rem",
+                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
+                    flex: "0 0 auto",
                   }}
                 >
-                  {book.title}
+                  <div
+                    style={{
+                      height: "200px",
+                      borderRadius: "10px",
+                      background:
+                        "linear-gradient(135deg, #D7EFFF 0%, #F1F8FF 100%)",
+                      marginBottom: "0.75rem",
+                      overflow: "hidden",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {book?.cover && (
+                      <img
+                        src={book.cover}
+                        alt={book.title}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                        }}
+                      />
+                    )}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "0.9rem",
+                      fontWeight: "600",
+                      color: "#111827",
+                      marginBottom: "0.35rem",
+                      fontFamily: "Pretendard",
+                    }}
+                  >
+                    {loading ? "추천 도서" : book.title}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "0.75rem",
+                      color: "#6B7280",
+                      fontFamily: "Pretendard",
+                    }}
+                  >
+                    {loading ? "불러오는 중..." : book.author}
+                  </div>
                 </div>
-                <div
-                  style={{
-                    fontSize: "0.75rem",
-                    color: "#6B7280",
-                    fontFamily: "Pretendard",
-                  }}
-                >
-                  {book.author}
-                </div>
-              </div>
-            ))}
+              )
+            )}
           </div>
         </section>
       </div>
