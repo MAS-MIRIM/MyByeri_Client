@@ -1,11 +1,14 @@
-import { Book, Loader2, Edit2, Save, X, Trash2 } from "lucide-react";
+import { Check, Book, Loader2, Edit2, Save, X, Trash2 } from "lucide-react";
 import { useState, useEffect } from "react";
 import Container from "../components/ui/Container";
+import BackButton from "../components/ui/BackButton";
 import Button from "../components/ui/Button";
 import TextArea from "../components/ui/TextArea";
+import ProgressBar from "../components/ui/ProgressBar";
 
 const ReadingRecordView = ({
   book,
+  onBack,
   onUpdateRecord,
   onDeleteRecord,
 }) => {
@@ -14,6 +17,11 @@ const ReadingRecordView = ({
   const [isLoading, setIsLoading] = useState(!book.readingRecord);
   const [isEditing, setIsEditing] = useState(false);
   const [editedRecord, setEditedRecord] = useState(record);
+  const progress =
+    book.totalChapters > 0
+      ? (book.completedChapters.length / book.totalChapters) * 100
+      : 0;
+  const isComplete = progress === 100;
 
   useEffect(() => {
     setRecord(book.readingRecord || "");
@@ -91,27 +99,31 @@ const ReadingRecordView = ({
   };
 
   return (
-    <Container>
+    <Container padding="0 1rem 5rem 1rem">
+      <BackButton onClick={onBack} />
       <div
         style={{
           backgroundColor: "white",
-          borderRadius: "0.75rem",
-          boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
-          padding: "1.5rem",
-          marginBottom: "1.5rem",
+          borderRadius: "1rem",
+          boxShadow:
+            "0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04)",
+          padding: "1.25rem",
+          marginBottom: "1.25rem",
+          border: "1px solid #E6F2FF",
         }}
       >
-        <div style={{ display: "flex", gap: "1.5rem", marginBottom: "1.5rem" }}>
+        <div style={{ display: "flex", gap: "1.5rem", marginBottom: "1.25rem" }}>
           <div
             style={{
               width: "8rem",
-              height: "11rem",
-              background: "linear-gradient(to bottom right, #BFE3FF, #9DD7FF)",
-              borderRadius: "0.5rem",
+              height: "10rem",
+              background: "linear-gradient(135deg, #BFE3FF 0%, #9DD7FF 100%)",
+              borderRadius: "0.75rem",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               flexShrink: 0,
+              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.12)",
             }}
           >
             {book.cover ? (
@@ -130,34 +142,128 @@ const ReadingRecordView = ({
             )}
           </div>
 
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1, marginTop: "0.75rem" }}>
             <h2
               style={{
-                fontSize: "1.5rem",
-                fontWeight: "bold",
-                color: "#1f2937",
+                fontSize: "1.3rem",
+                fontWeight: "600",
                 marginBottom: "0.5rem",
+                fontFamily: "Pretendard",
+                lineHeight: "1.3",
               }}
             >
               {book.title}
             </h2>
-            <p style={{ color: "#4b5563", marginBottom: "1rem" }}>
-              {book.author}
-            </p>
-            <div
+            <p
               style={{
-                padding: "0.75rem 1rem",
-                backgroundColor: "#EAF6FF",
-                borderRadius: "0.5rem",
-                color: "#5AA4E6",
-                fontWeight: "600",
-                fontSize: "0.875rem",
+                color: "#6B7280",
+                marginBottom: "1.25rem",
+                fontFamily: "Pretendard",
+                fontSize: "0.95rem",
               }}
             >
-              📖 독서 기록장
+              {book.author}
+            </p>
+
+            <div style={{ marginBottom: "1rem" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  fontSize: "0.875rem",
+                  marginBottom: "0.5rem",
+                }}
+              >
+                <span
+                  style={{
+                    color: "#6B7280",
+                    fontFamily: "Pretendard",
+                    fontWeight: "500",
+                  }}
+                >
+                  읽은 챕터
+                </span>
+                <span
+                  style={{
+                    fontWeight: "700",
+                    color: isComplete ? "#5AA4E6" : "#7BC3FF",
+                    fontFamily: "Pretendard",
+                    fontSize: "0.9375rem",
+                  }}
+                >
+                  {book.completedChapters.length} / {book.totalChapters}
+                </span>
+              </div>
+              <ProgressBar progress={progress} isComplete={isComplete} />
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginTop: "0.4rem",
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: "0.75rem",
+                    color: "#9CA3AF",
+                    fontFamily: "Pretendard",
+                  }}
+                >
+                  진행률
+                </span>
+                <span
+                  style={{
+                    fontWeight: "700",
+                    color: isComplete ? "#7BC3FF" : "#9DD7FF",
+                    fontFamily: "Pretendard",
+                    fontSize: "0.85rem",
+                  }}
+                >
+                  {Math.round(progress)}%
+                </span>
+              </div>
             </div>
           </div>
         </div>
+        {isComplete && (
+          <div>
+            <div
+              style={{
+                backgroundColor: "#EAF6FF",
+                border: "1px solid #BFE3FF",
+                borderRadius: "0.5rem",
+                padding: "1rem",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                marginBottom: "1rem",
+              }}
+            >
+              <Check size={24} color="#7BC3FF" />
+              <div style={{ flex: 1 }}>
+                <p
+                  style={{
+                    fontWeight: "bold",
+                    color: "#5AA4E6",
+                    fontFamily: "Pretendard",
+                  }}
+                >
+                  완독하셨습니다!
+                </p>
+                <p
+                  style={{
+                    fontSize: "0.875rem",
+                    color: "#7BC3FF",
+                    fontFamily: "Pretendard",
+                  }}
+                >
+                  모든 챕터를 완료했어요 🎉
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       <div
@@ -325,32 +431,7 @@ const ReadingRecordView = ({
                   fontSize: "1rem",
                 }}
               >
-                {record.split("\n").map((line, index) => {
-                  if (
-                    line.trim().startsWith("#") ||
-                    line.trim().match(/^[가-힣]+:$/)
-                  ) {
-                    return (
-                      <h3
-                        key={index}
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: "1.125rem",
-                          color: "#5AA4E6",
-                          marginTop: index > 0 ? "1.5rem" : "0",
-                          marginBottom: "0.75rem",
-                        }}
-                      >
-                        {line.replace(/^#+\s*/, "")}
-                      </h3>
-                    );
-                  }
-                  return (
-                    <p key={index} style={{ marginBottom: "0.75rem" }}>
-                      {line || "\u00A0"}
-                    </p>
-                  );
-                })}
+                {record}
               </div>
             )}
           </>

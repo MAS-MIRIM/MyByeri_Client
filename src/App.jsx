@@ -340,6 +340,7 @@ function App() {
           >
             <ReadingRecordView
               book={currentBook}
+              onBack={() => navigate("detail", -1)}
               onUpdateRecord={updateReadingRecord}
               onDeleteRecord={deleteReadingRecord}
             />
