@@ -14,7 +14,7 @@ const DetailView = ({ book, onBack, onSelectChapter, onViewReadingRecord }) => {
   const chapters = Array.from({ length: book.totalChapters }, (_, i) => i + 1);
 
   return (
-    <Container padding="1.25rem 1.25rem 5rem 1.25rem">
+    <Container padding="0 1rem 5rem 1rem">
       <BackButton onClick={onBack} />
 
       <div

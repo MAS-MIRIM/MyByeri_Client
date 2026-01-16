@@ -19,7 +19,7 @@ const ChapterView = ({ book, chapterNum, onBack, onComplete }) => {
   };
 
   return (
-    <Container padding="1rem 1.5rem 5rem 1.5rem">
+    <Container padding="0 1.5rem 5rem 1.5rem">
       <BackButton onClick={onBack} />
 
       <div

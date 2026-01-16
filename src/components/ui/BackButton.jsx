@@ -4,7 +4,7 @@ const BackButton = ({ onClick }) => (
   <button
     onClick={onClick}
     style={{
-      marginBottom: "2rem",
+      marginBottom: "0.75rem",
       display: "flex",
       alignItems: "center",
       gap: "0.5rem",

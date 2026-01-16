@@ -38,10 +38,17 @@ const SearchView = ({ onBack, onAddBook }) => {
   };
 
   return (
-    <Container padding="1rem 1.5rem 5rem 1.5rem">
+    <Container padding="0 1rem 5rem 1rem">
       <BackButton onClick={onBack} />
 
-      <div style={{ marginBottom: "1.5rem", display: "flex", gap: "0.5rem" }}>
+      <div
+        style={{
+          marginBottom: "0.75rem",
+          display: "flex",
+          gap: "0.5rem",
+          fontFamily: "Pretendard",
+        }}
+      >
         <Input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
@@ -52,7 +59,7 @@ const SearchView = ({ onBack, onAddBook }) => {
           onClick={handleSearch}
           disabled={loading}
           style={{
-            padding: "0.75rem 1.5rem",
+            padding: "0.75rem 1.75rem",
             backgroundColor: loading ? "#9ca3af" : "#7BC3FF",
             color: "white",
             borderRadius: "0.75rem",
@@ -61,7 +68,7 @@ const SearchView = ({ onBack, onAddBook }) => {
             transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
             whiteSpace: "nowrap",
             fontFamily: "Pretendard",
-            fontWeight: "600",
+            fontWeight: "500",
             boxShadow: loading
               ? "none"
               : "0 2px 4px rgba(123, 195, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.06)",
