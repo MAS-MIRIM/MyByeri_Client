@@ -74,6 +74,11 @@ function App() {
         return book;
       })
     );
+    setCurrentBook((prevBook) =>
+      prevBook && prevBook.isbn === bookId
+        ? { ...prevBook, readingRecord }
+        : prevBook
+    );
   };
 
   const deleteReadingRecord = (bookId) => {
@@ -84,6 +89,11 @@ function App() {
         }
         return book;
       })
+    );
+    setCurrentBook((prevBook) =>
+      prevBook && prevBook.isbn === bookId
+        ? { ...prevBook, readingRecord: null }
+        : prevBook
     );
   };
 
@@ -98,6 +108,7 @@ function App() {
   };
 
   const completeChapter = async (bookId, chapterNum, note) => {
+    let updatedCurrentBook = null;
     const updatedBooks = books.map((book) => {
       if (book.isbn === bookId) {
         const newCompletedChapters = [
@@ -121,6 +132,11 @@ function App() {
                     b.isbn === bookId ? { ...b, readingRecord: record } : b
                   )
                 );
+                setCurrentBook((prevBook) =>
+                  prevBook && prevBook.isbn === bookId
+                    ? { ...prevBook, readingRecord: record }
+                    : prevBook
+                );
               }
             })
             .catch((error) => {
@@ -128,12 +144,18 @@ function App() {
             });
         }
 
+        if (currentBook && currentBook.isbn === bookId) {
+          updatedCurrentBook = updatedBook;
+        }
         return updatedBook;
       }
       return book;
     });
 
     setBooks(updatedBooks);
+    if (updatedCurrentBook) {
+      setCurrentBook(updatedCurrentBook);
+    }
   };
 
   const deleteBook = (bookId) => {
